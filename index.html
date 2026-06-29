@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eat ABQ — Spin the Wheel, Find Your Meal</title>
+  <meta name="description" content="Can't decide where to eat in Albuquerque? Spin the Eat ABQ food wheel and discover your next favorite restaurant. Free on Android." />
+  <meta property="og:title" content="Eat ABQ — Spin the Wheel, Find Your Meal" />
+  <meta property="og:description" content="Spin a food category wheel and get handpicked restaurant suggestions across Albuquerque. Free for Android." />
+  <meta property="og:url" content="https://eatabq.app" />
+  <meta property="og:type" content="website" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary:    #BB3C2E;
+      --primary-dk: #8B2820;
+      --secondary:  #8B4A00;
+      --amber:      #7B5800;
+      --bg:         #FFF8F2;
+      --card-bg:    #FFFFFF;
+      --text:       #2D1810;
+      --text-soft:  #6B4C38;
+      --border:     #E8D5C4;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ── Header ── */
+    header {
+      background: var(--primary);
+      color: #fff;
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .header-logo { font-size: 2rem; line-height: 1; }
+    .header-name {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+    .header-sub {
+      font-size: 0.8rem;
+      opacity: 0.85;
+      letter-spacing: 0.3px;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dk) 100%);
+      color: #fff;
+      text-align: center;
+      padding: 4rem 1.5rem 5rem;
+    }
+    .hero-wheel { font-size: 5rem; margin-bottom: 1rem; }
+    .hero h1 {
+      font-size: clamp(1.75rem, 5vw, 2.75rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      max-width: 500px;
+      margin: 0 auto 2rem;
+    }
+    .btn-store {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 2px solid rgba(255,255,255,0.6);
+      color: #fff;
+      text-decoration: none;
+      padding: 0.75rem 1.75rem;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .btn-store:hover {
+      background: rgba(255,255,255,0.25);
+      border-color: #fff;
+    }
+    .store-note {
+      margin-top: 0.6rem;
+      font-size: 0.8rem;
+      opacity: 0.7;
+    }
+
+    /* ── Wave divider ── */
+    .wave {
+      display: block;
+      width: 100%;
+      margin-top: -2px;
+      fill: var(--bg);
+    }
+
+    /* ── Sections ── */
+    section { padding: 3rem 1.5rem; max-width: 760px; margin: 0 auto; }
+
+    h2 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 1.25rem;
+      text-align: center;
+    }
+
+    /* ── Feature cards ── */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+    .feature-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem 1.25rem;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .feature-card .icon { font-size: 2.25rem; margin-bottom: 0.6rem; }
+    .feature-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+    }
+    .feature-card p {
+      font-size: 0.88rem;
+      color: var(--text-soft);
+      line-height: 1.5;
+    }
+
+    /* ── Categories strip ── */
+    .categories {
+      background: var(--card-bg);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+    }
+    .cat-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+    .chip {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      padding: 0.4rem 0.9rem;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    /* ── Support section ── */
+    .support-section { text-align: center; }
+    .support-section p {
+      color: var(--text-soft);
+      max-width: 460px;
+      margin: 0 auto 1.5rem;
+    }
+    .btn-kofi {
+      display: inline-block;
+      background: #FF5E5B;
+      color: #fff;
+      text-decoration: none;
+      padding: 0.75rem 2rem;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 600;
+      box-shadow: 0 4px 14px rgba(255,94,91,0.35);
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-kofi:hover { background: #e04e4b; transform: translateY(-1px); }
+
+    /* ── ABQ pride ── */
+    .abq-section {
+      background: linear-gradient(135deg, #1B5E20 0%, #2E7D32 100%);
+      color: #fff;
+      text-align: center;
+      padding: 3rem 1.5rem;
+    }
+    .abq-section h2 { color: #fff; }
+    .abq-section p {
+      max-width: 500px;
+      margin: 0 auto;
+      opacity: 0.9;
+      font-size: 1.05rem;
+    }
+    .abq-badge {
+      display: inline-block;
+      margin-top: 1.25rem;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.4);
+      border-radius: 50px;
+      padding: 0.4rem 1.2rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--text);
+      color: rgba(255,255,255,0.7);
+      text-align: center;
+      padding: 2rem 1.5rem;
+      font-size: 0.85rem;
+    }
+    footer .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.75rem;
+    }
+    footer a {
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+    }
+    footer a:hover { text-decoration: underline; }
+    .footer-copy { opacity: 0.5; }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <span class="header-logo">🌮</span>
+    <div>
+      <div class="header-name">Eat ABQ</div>
+      <div class="header-sub">Albuquerque's Food Discovery App</div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-wheel">🎡</div>
+    <h1>Can't decide where to eat?<br>Let fate decide.</h1>
+    <p>Spin the wheel, pick a food category, and discover your next favorite restaurant in Albuquerque.</p>
+    <a href="https://play.google.com/store/apps/details?id=com.connorosterberg.eatabq" class="btn-store">
+      ▶ Download on Google Play
+    </a>
+    <div class="store-note">Free for Android · No account required</div>
+  </div>
+
+  <!-- Wave -->
+  <svg class="wave" viewBox="0 0 1200 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path d="M0,30 C200,60 400,0 600,30 C800,60 1000,0 1200,30 L1200,60 L0,60 Z"/>
+  </svg>
+
+  <!-- Features -->
+  <section>
+    <h2>How It Works</h2>
+    <div class="features">
+      <div class="feature-card">
+        <div class="icon">🎡</div>
+        <h3>Spin the Wheel</h3>
+        <p>Choose a food category or let the wheel decide. New Mexican, BBQ, Asian, Pizza, and more.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">🍽️</div>
+        <h3>Discover Restaurants</h3>
+        <p>Get 3–5 handpicked local spots. Filter by price, rating, and distance from where you are.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">❤️</div>
+        <h3>Save Your Favorites</h3>
+        <p>Heart the places you love. Track which ones you've visited and add personal notes.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">📴</div>
+        <h3>Works Offline</h3>
+        <p>All restaurant data lives on your device. No internet required once you've downloaded the app.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories -->
+  <div class="categories">
+    <h2>12 Food Categories</h2>
+    <div class="cat-chips">
+      <span class="chip">🌮 Mexican</span>
+      <span class="chip">🍔 American</span>
+      <span class="chip">🔥 BBQ</span>
+      <span class="chip">🍜 Asian</span>
+      <span class="chip">🍕 Pizza</span>
+      <span class="chip">🍝 Italian</span>
+      <span class="chip">🍸 Bars &amp; Brews</span>
+      <span class="chip">🍛 Indian</span>
+      <span class="chip">🥙 Mediterranean</span>
+      <span class="chip">🍣 Seafood &amp; Sushi</span>
+      <span class="chip">🌱 Vegan</span>
+      <span class="chip">🍽️ Other</span>
+    </div>
+  </div>
+
+  <!-- ABQ Pride -->
+  <div class="abq-section">
+    <h2>Built for the Duke City 🌵</h2>
+    <p>Eat ABQ is lovingly made in Albuquerque, New Mexico — celebrating the local restaurants and flavors that make ABQ special.</p>
+    <span class="abq-badge">505 forever 🤙</span>
+  </div>
+
+  <!-- Support -->
+  <section class="support-section">
+    <h2>Support the App ☕</h2>
+    <p>Eat ABQ is free with no paywalls. If it's helped you discover a great meal, a small tip keeps the green chiles coming.</p>
+    <a href="https://ko-fi.com/osterbergappsllc" class="btn-kofi" target="_blank" rel="noopener">
+      ☕ Buy Me a Coffee on Ko-fi
+    </a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-links">
+      <a href="/privacy">Privacy Policy</a>
+      <a href="/terms">Terms of Use</a>
+      <a href="mailto:feedback@eatabq.app">Contact Us</a>
+      <a href="https://ko-fi.com/osterbergappsllc" target="_blank" rel="noopener">Support</a>
+    </div>
+    <div class="footer-copy">© 2026 Osterberg Apps LLC · Albuquerque, New Mexico</div>
+  </footer>
+
+</body>
+</html>

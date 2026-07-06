@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Privacy Policy — Eat ABQ</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="favicon.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -107,23 +110,23 @@
     <p>No personally identifiable information (name, email, phone number, or precise location) is linked to these events. You can withdraw consent at any time in <strong>Settings → Privacy &amp; Analytics</strong>.</p>
 
     <p><strong>Advertising</strong></p>
-    <p>Eat ABQ displays banner ads served by <strong>Google AdMob</strong>. AdMob may use device identifiers and general location (country/region) to serve contextually relevant ads. You can opt out of personalized ads via your Android device settings under <em>Privacy → Ads</em>. See Google's privacy policy at <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>.</p>
+    <p>Eat ABQ displays banner ads served by <strong>Google AdMob</strong>. AdMob may use device identifiers and general location (country/region) to serve contextually relevant ads. Where required (for example, users in the EEA, UK, and Switzerland), the app shows Google's consent form before any ad is requested, and lets you review or change that choice any time via <strong>Settings → About → Ad Privacy Options</strong>. Everywhere else, you can still opt out of personalized ads via your Android device settings under <em>Privacy → Ads</em>. See Google's privacy policy at <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>.</p>
 
     <h2>2. Location Data</h2>
     <p>If you grant location permission, the app uses your device's location only to calculate approximate distances to restaurants. Location data is processed entirely on-device and is never sent to our servers.</p>
 
     <h2>3. Restaurant Data</h2>
-    <p>All restaurant listings are bundled with the app or loaded from local assets. No restaurant data is fetched from the internet at runtime — the app works completely offline.</p>
+    <p>The restaurant catalog is synced from our Firestore database so listings stay current without requiring an app update, with a bundled offline copy used as a fallback when Firestore can't be reached (e.g. no connectivity on first launch). The catalog itself contains only public restaurant information (name, cuisine, hours, price tier, rating, location) — it does not include or transmit any of your personal data.</p>
 
     <h2>4. Third-Party Services</h2>
     <p>The following third-party services may process data according to their own privacy policies:</p>
     <ul>
-      <li><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Firebase Analytics &amp; Crashlytics</a> (Google LLC)</li>
+      <li><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Firebase Analytics, Crashlytics &amp; Firestore</a> (Google LLC)</li>
       <li><a href="https://support.google.com/admob/answer/6128543" target="_blank" rel="noopener">Google AdMob</a> (Google LLC)</li>
     </ul>
 
     <h2>5. Data Retention &amp; Deletion</h2>
-    <p>Local data (favorites, notes, settings) is deleted when you uninstall the app. Anonymous analytics data retained by Firebase follows Google's standard retention periods. To request deletion of any analytics data associated with your device, contact us at the address below.</p>
+    <p>Local data (favorites, notes, settings) is deleted when you uninstall the app, unless you've used the in-app <strong>Export My Data</strong> feature to save a copy yourself, or Android's own device-transfer tool has carried it to a new phone — both are entirely under your control. Anonymous analytics data retained by Firebase follows Google's standard retention periods. To request deletion of any analytics data associated with your device, contact us at the address below.</p>
 
     <h2>6. Children's Privacy</h2>
     <p>Eat ABQ is not directed to children under the age of 13. We do not knowingly collect personal information from children.</p>

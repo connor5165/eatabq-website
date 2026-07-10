@@ -117,6 +117,15 @@
       text-align: center;
     }
 
+    /* ── Story section ── */
+    .story-section { max-width: 620px; }
+    .story-section p {
+      color: var(--text-soft);
+      font-size: 1.02rem;
+      text-align: left;
+    }
+    .story-section p + p { margin-top: 1rem; }
+
     /* ── Feature cards ── */
     .features {
       display: grid;
@@ -265,6 +274,12 @@
     <path d="M0,30 C200,60 400,0 600,30 C800,60 1000,0 1200,30 L1200,60 L0,60 Z"/>
   </svg>
 
+  <!-- Origin Story -->
+  <section class="story-section">
+    <h2>The Origin Story</h2>
+    <p>Eat ABQ started as a very unofficial fix to a very real problem: my partner and I could never agree on where to eat in Albuquerque. Every night turned into the same loop — scrolling apps, listing the same five restaurants, and somehow still ending up at the same taco place. So I built a wheel. Spin it, get 3–5 real ABQ restaurants that match what you're craving, pick one, done. No more deliberation paralysis.</p>
+  </section>
+
   <!-- Features -->
   <section>
     <h2>How It Works</h2>
@@ -321,7 +336,7 @@
   <!-- Support -->
   <section class="support-section">
     <h2>Support the App ☕</h2>
-    <p>Eat ABQ is free with no paywalls. If it's helped you discover a great meal, a small tip keeps the green chiles coming.</p>
+    <p>Eat ABQ is built solo by one guy who got tired of doom-scrolling Yelp with his partner every Friday night — now with 700+ local spots and counting. If Eat ABQ has ever settled a dinner debate for you, a tip helps keep the data fresh, the servers running, and the app ad-free-curious.</p>
     <a href="https://ko-fi.com/osterbergappsllc" class="btn-kofi" target="_blank" rel="noopener">
       ☕ Buy Me a Coffee on Ko-fi
     </a>

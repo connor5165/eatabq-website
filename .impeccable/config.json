@@ -1,0 +1,14 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "space grotesk",
+        "createdAt": "2026-08-08T17:30:40.159Z",
+        "reason": "User confirmed space grotesk is intentional"
+      }
+    ]
+  }
+}

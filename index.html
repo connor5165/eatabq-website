@@ -76,7 +76,7 @@
     .wheel{
       cursor:pointer;width:280px;height:280px;border-radius:50%;border:7px solid #fff;
       box-shadow:0 18px 40px rgba(0,0,0,.22);position:relative;
-      background:conic-gradient(#0E6E64 0deg 30deg,#4C7A2F 30deg 60deg,#9B1B4E 60deg 90deg,#4B5563 90deg 120deg,#C0392B 120deg 150deg,#2E6DA4 150deg 180deg,#3F7D3F 180deg 210deg,#5B3A8E 210deg 240deg,#0E6E64 240deg 270deg,#D9782E 270deg 300deg,#5B3A8E 300deg 330deg,#2E6DA4 330deg 360deg);
+      background:conic-gradient(#E53935 0deg 27.69deg,#00897B 27.69deg 55.38deg,#1565C0 55.38deg 83.08deg,#2E7D32 83.08deg 110.77deg,#6A1B9A 110.77deg 138.46deg,#00695C 138.46deg 166.15deg,#F57F17 166.15deg 193.85deg,#4527A0 193.85deg 221.54deg,#0277BD 221.54deg 249.23deg,#006064 249.23deg 276.92deg,#558B2F 276.92deg 304.62deg,#AD1457 304.62deg 332.31deg,#455A64 332.31deg 360deg);
       transition:transform 2.4s cubic-bezier(.15,.65,.2,1);
     }
     .wheel span{position:absolute;transform:translate(-50%,-50%);color:#fff;font:700 10px Manrope,sans-serif;text-shadow:0 1px 2px rgba(0,0,0,.5);white-space:nowrap;transition:transform 2.4s cubic-bezier(.15,.65,.2,1)}
@@ -87,19 +87,55 @@
     .categories{padding:44px;background:var(--sand-deep);text-align:center}
     .categories h2{font:700 22px 'Space Grotesk',sans-serif;color:var(--ink);margin:0 0 18px}
     .chips{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;max-width:680px;margin:0 auto}
-    .chip{color:#fff;border-radius:50px;padding:7px 14px;font:600 12.5px Manrope,sans-serif;display:inline-block;transition:transform .2s,box-shadow .2s}
+    .chip{color:#fff;border-radius:50px;padding:7px 14px;font:600 12.5px Manrope,sans-serif;display:inline-block;transition:transform .2s,box-shadow .2s,opacity .5s ease;opacity:0}
     .chip:hover{transform:translateY(-3px) scale(1.06);box-shadow:0 8px 16px rgba(0,0,0,.2)}
     .chip.c1{background:var(--red)} .chip.c2{background:var(--amber)} .chip.c3{background:var(--rust)}
     .chip.c4{background:var(--olive)} .chip.c5{background:var(--ochre)} .chip.c6{background:var(--maroon)}
 
     .how{padding:44px;background:var(--sand)}
     .how h2{text-align:center;font:700 22px 'Space Grotesk',sans-serif;color:var(--ink);margin:0 0 26px}
-    .how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+    .how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px 22px}
     .how-item{text-align:center}
     .how-icon{font-size:32px;margin-bottom:10px;display:inline-block;transition:transform .25s}
     .how-icon:hover{transform:scale(1.25) rotate(-8deg)}
     .how-item h3{font:700 14px Manrope,sans-serif;margin:0 0 6px;color:var(--ink)}
     .how-item p{font:500 12.5px/1.5 Manrope,sans-serif;color:var(--ink-soft);margin:0}
+    .theme-dots{display:flex;gap:6px;justify-content:center;margin-top:10px}
+    .theme-dot{width:13px;height:13px;border-radius:50%;box-shadow:0 1px 3px rgba(0,0,0,.3)}
+    .theme-dot.red{background:#D9432E}
+    .theme-dot.green{background:#4C7A2F}
+    .theme-dot.xmas{background:linear-gradient(90deg,#D9432E 50%,#4C7A2F 50%)}
+    .how-grid .how-item:nth-child(1){transition-delay:0s}
+    .how-grid .how-item:nth-child(2){transition-delay:.08s}
+    .how-grid .how-item:nth-child(3){transition-delay:.16s}
+    .how-grid .how-item:nth-child(4){transition-delay:.24s}
+    .how-grid .how-item:nth-child(5){transition-delay:.32s}
+    .how-grid .how-item:nth-child(6){transition-delay:.4s}
+
+    .stats-strip{background:linear-gradient(180deg,var(--sand-deep),var(--sand));padding:30px 20px}
+    .stats-inner{display:flex;justify-content:center;gap:52px;flex-wrap:wrap;max-width:720px;margin:0 auto;text-align:center}
+    .stat{display:flex;flex-direction:column;gap:2px}
+    .stat-num{font:700 30px 'Space Grotesk',sans-serif;color:var(--terracotta)}
+    .stat-label{font:600 11.5px Manrope,sans-serif;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.05em}
+
+    .spin-result{max-width:320px;margin:0 auto;display:grid;grid-template-rows:0fr;opacity:0;transform:translateY(8px);transition:opacity .35s ease,transform .35s ease,grid-template-rows .4s ease}
+    .spin-result.visible{opacity:1;transform:translateY(0);grid-template-rows:1fr}
+    .spin-result-inner{overflow:hidden;min-height:0;padding-top:16px}
+    .spin-result-body{background:#fff;border-radius:16px;box-shadow:0 12px 26px rgba(0,0,0,.16);padding:16px 18px}
+    .spin-result-header{font:700 14px 'Space Grotesk',sans-serif;color:var(--ink);margin-bottom:10px;text-align:center}
+    .sample-list{display:flex;flex-direction:column;gap:8px}
+    .sample-card{display:flex;flex-direction:column;gap:1px;text-align:left;padding:8px 10px;background:var(--sand);border-radius:10px}
+    .sample-name{font:700 13px Manrope,sans-serif;color:var(--ink)}
+    .sample-meta{font:500 11.5px Manrope,sans-serif;color:var(--ink-soft)}
+    .spin-result-note{margin-top:10px;font:500 10.5px/1.4 Manrope,sans-serif;color:var(--ink-soft);text-align:center}
+
+    /* ── Scroll reveal ── */
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    .categories.visible .chip{opacity:1}
+    @media (prefers-reduced-motion: reduce){
+      .reveal,.reveal.visible,.chips .chip,.chips.visible .chip{transition:none;opacity:1;transform:none}
+    }
 
     .featured{padding:44px;background:var(--sand-deep)}
     .featured-inner{max-width:840px;margin:0 auto;display:flex;align-items:center;gap:40px;flex-wrap:wrap;justify-content:center}
@@ -222,10 +258,19 @@
         <path d="M0,260 L90,190 L150,230 L230,170 L300,235 L400,180 L470,240 L560,185 L650,245 L730,200 L800,235 L800,300 L0,300 Z" fill="#D9432E">
           <animate attributeName="fill" values="#D9432E;#5C4A32;#D9432E" keyTimes="0;0.5;1" dur="42s" repeatCount="indefinite"/>
         </path>
+        <polygon points="159,135 170,120 183,135" fill="#FFE9C2" opacity=".95">
+          <animate attributeName="opacity" values=".95;.15;.95" keyTimes="0;0.5;1" dur="42s" repeatCount="indefinite"/>
+        </polygon>
+        <polygon points="279,155 300,140 314,155" fill="#FFE9C2" opacity=".95">
+          <animate attributeName="opacity" values=".95;.15;.95" keyTimes="0;0.5;1" dur="42s" repeatCount="indefinite"/>
+        </polygon>
         <polygon points="215,180 230,170 245,182" fill="#FFE9C2" opacity=".95">
           <animate attributeName="opacity" values=".95;.15;.95" keyTimes="0;0.5;1" dur="42s" repeatCount="indefinite"/>
         </polygon>
-        <polygon points="388,190 400,180 412,190" fill="#FFE9C2" opacity=".95">
+        <polygon points="404,165 420,150 435,165" fill="#FFE9C2" opacity=".95">
+          <animate attributeName="opacity" values=".95;.15;.95" keyTimes="0;0.5;1" dur="42s" repeatCount="indefinite"/>
+        </polygon>
+        <polygon points="524,170 540,155 558,170" fill="#FFE9C2" opacity=".95">
           <animate attributeName="opacity" values=".95;.15;.95" keyTimes="0;0.5;1" dur="42s" repeatCount="indefinite"/>
         </polygon>
         <path d="M0,300 L0,270 L100,255 L220,270 L340,250 L460,272 L600,252 L720,268 L800,258 L800,300 Z" fill="#3A2A1D"/>
@@ -245,7 +290,15 @@
   </div>
 </div>
 
-<div class="wheel-section">
+<div class="stats-strip reveal">
+  <div class="stats-inner">
+    <div class="stat"><span class="stat-num" id="statRestaurants">800+</span><span class="stat-label">Real ABQ restaurants</span></div>
+    <div class="stat"><span class="stat-num" id="statCategories">13</span><span class="stat-label">Food categories</span></div>
+    <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Free, no account</span></div>
+  </div>
+</div>
+
+<div class="wheel-section reveal">
   <h2>Spin to Decide</h2>
   <div class="wheel-row">
     <div class="wheel-zia left"><img src="assets/zia-symbol.png" alt=""></div>
@@ -253,56 +306,37 @@
       <div class="wheel-wrap">
         <div class="wheel-pointer"></div>
         <div class="wheel" id="wheel">
-          <span style="left:58.93%;top:13.57%">🍣 Seafood</span>
-          <span style="left:74.64%;top:25.36%">🌱 Vegan</span>
-          <span style="left:83.93%;top:41.07%">🍰 Dessert</span>
-          <span style="left:83.93%;top:58.93%">🍽️ Other</span>
-          <span style="left:74.64%;top:74.64%">🌮 Mexican</span>
-          <span style="left:58.93%;top:83.93%">🍔 American</span>
-          <span style="left:41.07%;top:83.93%">🍜 Asian</span>
-          <span style="left:25.36%;top:74.64%">🍕 Pizza</span>
-          <span style="left:16.07%;top:58.93%">🍝 Italian</span>
-          <span style="left:16.07%;top:41.07%">🍸 Bars</span>
-          <span style="left:25.36%;top:25.36%">🍛 Indian</span>
-          <span style="left:41.07%;top:16.07%">🥙 Med-East</span>
           <div class="wheel-hub"></div>
         </div>
       </div>
       <button class="spin-btn" id="spinBtn">Spin Again!</button>
+      <div class="spin-result" id="spinResult"></div>
     </div>
     <div class="wheel-zia right"><img src="assets/zia-symbol.png" alt=""></div>
   </div>
 </div>
 
-<div class="categories" id="categories">
-  <h2>12 Food Categories</h2>
-  <div class="chips">
-    <span class="chip c1">🌮 Mexican</span>
-    <span class="chip c2">🍔 American</span>
-    <span class="chip c3">🔥 BBQ</span>
-    <span class="chip c4">🍜 Asian</span>
-    <span class="chip c5">🍕 Pizza</span>
-    <span class="chip c6">🍝 Italian</span>
-    <span class="chip c1">🍸 Bars &amp; Brews</span>
-    <span class="chip c2">🍛 Indian</span>
-    <span class="chip c4">🥙 Mediterranean</span>
-    <span class="chip c3">🍣 Seafood &amp; Sushi</span>
-    <span class="chip c4">🌱 Vegan</span>
-    <span class="chip c2">🍽️ Other</span>
-  </div>
+<div class="categories reveal" id="categories">
+  <h2><span id="categoryCount">13</span> Food Categories</h2>
+  <div class="chips" id="chipsContainer"></div>
 </div>
 
-<div class="how" id="how">
+<div class="how reveal" id="how">
   <h2>How it works</h2>
   <div class="how-grid">
     <div class="how-item"><div class="how-icon">🎡</div><h3>Spin</h3><p>Pick a craving or let fate choose.</p></div>
-    <div class="how-item"><div class="how-icon">🍽️</div><h3>Discover</h3><p>3–5 handpicked ABQ restaurants.</p></div>
-    <div class="how-item"><div class="how-icon">❤️</div><h3>Save</h3><p>Favorite spots, track visits.</p></div>
+    <div class="how-item"><div class="how-icon">🍽️</div><h3>Discover</h3><p>Up to 5 handpicked ABQ restaurants.</p></div>
+    <div class="how-item"><div class="how-icon">✅</div><h3>Pick One</h3><p>Tap "Pick this one!" so it's remembered for next time.</p></div>
+    <div class="how-item"><div class="how-icon">❤️</div><h3>Save</h3><p>Favorite spots, track visits, build a want-to-go list.</p></div>
+    <div class="how-item">
+      <div class="how-icon">🎨</div><h3>Customize</h3><p>Filter by price, distance &amp; open now. Pick a theme, too.</p>
+      <div class="theme-dots"><span class="theme-dot red" title="Red Chile"></span><span class="theme-dot green" title="Green Chile"></span><span class="theme-dot xmas" title="Christmas (both!)"></span></div>
+    </div>
     <div class="how-item"><div class="how-icon">📴</div><h3>Offline</h3><p>Everything lives on your phone.</p></div>
   </div>
 </div>
 
-<div class="featured" id="featured">
+<div class="featured reveal" id="featured">
   <div class="featured-inner">
     <img src="assets/screenshot-featured.png" alt="Eat ABQ app screenshot: Featured tab showing local restaurant deals and events">
     <div class="featured-text">
@@ -320,7 +354,7 @@
   </div>
 </div>
 
-<div class="screens">
+<div class="screens reveal">
   <div class="screens-row">
     <img src="assets/screenshot-wheel.png" alt="Eat ABQ app screenshot: spin the wheel">
     <img class="mid" src="assets/screenshot-browse.png" alt="Eat ABQ app screenshot: browse restaurants">
@@ -328,7 +362,7 @@
   </div>
 </div>
 
-<div class="faq" id="faq">
+<div class="faq reveal" id="faq">
   <h2>FAQ</h2>
   <div class="faq-list">
     <details class="faq-item">
@@ -358,7 +392,7 @@
   </div>
 </div>
 
-<div class="duke">
+<div class="duke reveal">
   <h2>Built for the Duke City</h2>
   <p>505 forever</p>
 </div>
@@ -373,19 +407,146 @@
 </footer>
 
 <script>
-  var deg = 0;
+  // Single source of truth for the app's 13 wheel categories, matching
+  // shared/commonMain/.../model/FoodCategory.kt exactly — the wheel slices,
+  // the category chip list, and the heading count are all generated from
+  // this one array so they can never drift out of sync with each other again.
+  var CATEGORIES = [
+    {key:'mexican',       emoji:'🌮', label:'Mexican',           wheelLabel:'Mexican',  color:'#E53935'},
+    {key:'new_mexican',   emoji:'🌶️', label:'New Mexican',       wheelLabel:'New Mex',  color:'#00897B'},
+    {key:'american',      emoji:'🍔', label:'American & BBQ',    wheelLabel:'American', color:'#1565C0'},
+    {key:'asian',         emoji:'🍜', label:'Asian',             wheelLabel:'Asian',    color:'#2E7D32'},
+    {key:'pizza',         emoji:'🍕', label:'Pizza',             wheelLabel:'Pizza',    color:'#6A1B9A'},
+    {key:'italian',       emoji:'🍝', label:'Italian',           wheelLabel:'Italian',  color:'#00695C'},
+    {key:'brewery',       emoji:'🍸', label:'Bars & Brews',      wheelLabel:'Bars',     color:'#F57F17'},
+    {key:'indian',        emoji:'🍛', label:'Indian',            wheelLabel:'Indian',   color:'#4527A0'},
+    {key:'mediterranean', emoji:'🥙', label:'Mediterranean',     wheelLabel:'Med-East', color:'#0277BD'},
+    {key:'seafood',       emoji:'🍣', label:'Seafood & Sushi',   wheelLabel:'Seafood',  color:'#006064'},
+    {key:'vegan',         emoji:'🌱', label:'Vegan',             wheelLabel:'Vegan',    color:'#558B2F'},
+    {key:'dessert',       emoji:'🍰', label:'Dessert',           wheelLabel:'Dessert',  color:'#AD1457'},
+    {key:'other',         emoji:'🍽️', label:'Other',             wheelLabel:'Other',    color:'#455A64'}
+  ];
+
+  // A handful of real, current, well-rated Albuquerque restaurants per category
+  // (pulled from the app's own live catalog) so the spin demo below shows a
+  // genuine result, not a placeholder — refresh from restaurants.txt every
+  // so often to keep this from drifting too far from the live data.
+  var SAMPLES = {
+    mexican:       [{n:'Fiesta Azul Tequila House',type:'Mexican',s:5.0,p:'normal'},{n:'Taqueria Los Cuchillos',type:'Mexican',s:5.0,p:'normal'},{n:'La Loteria',type:'Mexican',s:4.9,p:'cheap'}],
+    new_mexican:   [{n:'Spirits of Old Town',type:'New Mexican',s:4.9,p:'normal'},{n:"Billy's New Mexican Style Kitchen",type:'New Mexican',s:4.8,p:'cheap'},{n:"Papa Frank's",type:'New Mexican',s:4.8,p:'cheap'}],
+    american:      [{n:'Barelas Farmhouse & Kitchen',type:'Farm-to-Table',s:5.0,p:'normal'},{n:'Heavy Burgers 505',type:'Burgers',s:5.0,p:'cheap'},{n:'J&J Cafe',type:'American',s:5.0,p:'normal'}],
+    asian:         [{n:'Bangkok Vegan',type:'Thai',s:4.8,p:'normal'},{n:'Banh Me & U',type:'Vietnamese',s:4.8,p:'normal'},{n:'K Style Kitchen',type:'Korean',s:4.8,p:'normal'}],
+    pizza:         [{n:'The Pizza Boss',type:'Pizza',s:5.0,p:'normal'},{n:'Roadrunner Pizza',type:'Pizza',s:4.9,p:'cheap'},{n:"Godfather's Pizza Express",type:'Pizza',s:4.8,p:'cheap'}],
+    italian:       [{n:'Tulipani',type:'Italian',s:5.0,p:'normal'},{n:"M'tucci's Italian",type:'Italian',s:4.5,p:'normal'},{n:"Sal's Ristorante & Pizzeria",type:'Italian',s:4.5,p:'normal'}],
+    brewery:       [{n:'Brew Lab 101 Beer & Cider Co.',type:'Brewery',s:4.9,p:'normal'},{n:'The Tap',type:'Taproom',s:4.8,p:'normal'},{n:'Boxing Bear Brewing Co.',type:'Brewery',s:4.7,p:'normal'}],
+    indian:        [{n:'Fresh Fusion ABQ',type:'Indian',s:4.8,p:'cheap'},{n:'Maharaja Indian Cuisine',type:'Indian',s:4.7,p:'normal'},{n:'Kabab & Curry',type:'Indian',s:4.7,p:'normal'}],
+    mediterranean: [{n:'Arabian Bites',type:'Mediterranean',s:4.9,p:'normal'},{n:'Anatolia',type:'Mediterranean',s:4.7,p:'normal'},{n:'Cafe Istanbul',type:'Mediterranean',s:4.6,p:'normal'}],
+    seafood:       [{n:'Sushi Roller',type:'Seafood',s:5.0,p:'normal'},{n:'Mariscos Altamar',type:'Seafood',s:4.6,p:'normal'},{n:'Bento Sushi Japanese Restaurant',type:'Sushi',s:4.6,p:'normal'}],
+    vegan:         [{n:'Buen Provecho',type:'Vegan',s:4.8,p:'cheap'},{n:'Lucky Goose',type:'Vegan',s:4.7,p:'normal'},{n:'Guava Tree Cafe',type:'Vegan',s:4.6,p:'cheap'}],
+    dessert:       [{n:'Flying Roadrunner Bakery',type:'Bakery/Cafe',s:4.8,p:'normal'},{n:'Corrales Teas & Chocolates',type:'Candy Shop',s:4.8,p:'normal'},{n:"Pop Pop's Italian Ice & Exotic Snacks",type:'Ice Cream',s:4.9,p:'normal'}],
+    other:         [{n:'Cafe del Sol',type:'Cafe',s:4.9,p:'normal'},{n:'XO Waffles & Crepes',type:'Crepes',s:4.8,p:'cheap'},{n:'Bike In Coffee',type:'Cafe',s:4.7,p:'normal'}]
+  };
+  var PRICE_SYMBOL = {cheap:'$',normal:'$$',expensive:'$$$',very_expensive:'$$$$'};
+
   var wheel = document.getElementById('wheel');
+  var wheelHub = wheel.querySelector('.wheel-hub');
+  var segAngle = 360 / CATEGORIES.length;
+
+  // Build the wheel's conic-gradient + slice labels from CATEGORIES.
+  var gradientStops = CATEGORIES.map(function(c, i){
+    return c.color + ' ' + (i * segAngle).toFixed(2) + 'deg ' + ((i + 1) * segAngle).toFixed(2) + 'deg';
+  }).join(',');
+  wheel.style.background = 'conic-gradient(' + gradientStops + ')';
+
+  var R = 35;
+  CATEGORIES.forEach(function(c, i){
+    var rad = (i + 0.5) * segAngle * Math.PI / 180;
+    var span = document.createElement('span');
+    span.style.left = (50 + R * Math.sin(rad)).toFixed(2) + '%';
+    span.style.top = (50 - R * Math.cos(rad)).toFixed(2) + '%';
+    span.textContent = c.emoji + ' ' + c.wheelLabel;
+    wheel.insertBefore(span, wheelHub);
+  });
   var labels = wheel.querySelectorAll('span');
+
+  // Build the category chip list from the same array.
+  var chipsContainer = document.getElementById('chipsContainer');
+  CATEGORIES.forEach(function(c, i){
+    var span = document.createElement('span');
+    span.className = 'chip c' + ((i % 6) + 1);
+    span.textContent = c.emoji + ' ' + c.label;
+    chipsContainer.appendChild(span);
+  });
+  document.getElementById('categoryCount').textContent = CATEGORIES.length;
+
+  // Spin + a real, live-ish result — mirrors the app's own "You landed on..."
+  // moment instead of just spinning for show.
+  var deg = 0;
+  var spinResult = document.getElementById('spinResult');
+  var spinning = false;
+
+  function renderResult(cat){
+    var picks = SAMPLES[cat.key] || [];
+    var cards = picks.map(function(r){
+      return '<div class="sample-card"><span class="sample-name">' + r.n + '</span>' +
+        '<span class="sample-meta">' + r.type + ' · ⭐ ' + r.s.toFixed(1) + ' · ' + (PRICE_SYMBOL[r.p] || '') + '</span></div>';
+    }).join('');
+    spinResult.innerHTML =
+      '<div class="spin-result-inner"><div class="spin-result-body">' +
+      '<div class="spin-result-header">' + cat.emoji + ' You landed on: ' + cat.label + '</div>' +
+      '<div class="sample-list">' + cards + '</div>' +
+      '<div class="spin-result-note">Real Albuquerque spots. The app shows up to 5 picks every spin.</div>' +
+      '</div></div>';
+    spinResult.classList.add('visible');
+  }
+
   function spin(){
+    if (spinning) return;
+    spinning = true;
+    spinResult.classList.remove('visible');
     deg += 1080 + Math.floor(Math.random() * 360);
     wheel.style.transform = 'rotate(' + deg + 'deg)';
     // counter-rotate each label so it stays upright while the wheel spins beneath it
     labels.forEach(function(label){
       label.style.transform = 'translate(-50%,-50%) rotate(' + (-deg) + 'deg)';
     });
+    setTimeout(function(){
+      var landingAngle = (360 - (deg % 360)) % 360;
+      var index = Math.floor(landingAngle / segAngle) % CATEGORIES.length;
+      renderResult(CATEGORIES[index]);
+      spinning = false;
+    }, 2500);
   }
   document.getElementById('spinBtn').addEventListener('click', spin);
   wheel.addEventListener('click', spin);
+
+  // Live restaurant count — reads the same public meta/restaurants_version
+  // Firestore doc the app itself checks on every launch, so this number
+  // updates automatically with every monthly data refresh, no site redeploy
+  // needed.
+  fetch('https://firestore.googleapis.com/v1/projects/eat-abq/databases/(default)/documents/meta/restaurants_version')
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      var count = data && data.fields && data.fields.count && data.fields.count.integerValue;
+      if (count) document.getElementById('statRestaurants').textContent = count + '+';
+    })
+    .catch(function(){ /* keep the static fallback number */ });
+
+  // Scroll-triggered reveal.
+  var revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, {threshold: 0.15});
+    revealEls.forEach(function(el){ io.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('visible'); });
+  }
 </script>
 
 </body>

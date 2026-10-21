@@ -1,0 +1,10 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.connorosterberg.eatabq",
+      "sha256_cert_fingerprints": ["8D:12:A8:E8:78:A4:5C:A7:0C:65:50:12:AC:E6:F2:E2:E3:84:3C:98:AE:52:5E:95:81:AE:57:27:4D:F1:8C:96"]
+    }
+  }
+]

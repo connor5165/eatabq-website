@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Eat ABQ</title>
+<link rel="icon" href="/favicon.png">
+<style>
+  :root { --bg:#fff7f0; --ink:#2b1a16; --muted:#6d5a54; --accent:#8c2a45; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#1d1412; --ink:#f6ece6; --muted:#c3aea5; --accent:#f08aa5; } }
+  * { box-sizing: border-box; }
+  body { margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center;
+         background:var(--bg); color:var(--ink); font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif; }
+  main { width:100%; max-width:480px; padding:32px 16px; text-align:center; }
+  img.zia { width:72px; height:72px; margin-bottom:8px; }
+  h1 { margin:0 0 8px; font-size:1.6rem; line-height:1.25; overflow-wrap:anywhere; }
+  p { margin:0 0 20px; color:var(--muted); }
+  .badges { display:flex; flex-wrap:wrap; gap:8px 12px; align-items:center; justify-content:center; margin-bottom:20px; }
+  .badges img { display:block; }
+  a { color:var(--accent); }
+  .hidden { display:none; }
+</style>
+</head>
+<body>
+<main>
+  <img class="zia" src="/assets/zia-symbol.png" alt="">
+
+  <!-- Shown for shared restaurant links (/r/<place id>) when the app didn't open. -->
+  <section id="share" class="hidden">
+    <h1 id="shareTitle">A friend sent you a restaurant</h1>
+    <p>Get Eat ABQ, then tap the link again and it'll open right in your Want to Go list.</p>
+  </section>
+
+  <section id="notfound" class="hidden">
+    <h1>Page not found</h1>
+    <p>That page doesn't exist, but dinner still does.</p>
+  </section>
+
+  <div class="badges">
+    <a href="https://apps.apple.com/app/id6792827854"><img src="/assets/app-store-badge.svg" alt="Download on the App Store" height="48"></a>
+    <a href="https://play.google.com/store/apps/details?id=com.connorosterberg.eatabq"><img src="/assets/google-play-badge.png" alt="Get it on Google Play" height="71"></a>
+  </div>
+  <p><a href="/">eatabq.app</a></p>
+</main>
+<script>
+  (function () {
+    var isShare = /^\/r\/[A-Za-z0-9_-]{10,200}\/?$/.test(location.pathname);
+    document.getElementById(isShare ? 'share' : 'notfound').classList.remove('hidden');
+    if (!isShare) return;
+    var name = new URLSearchParams(location.search).get('n');
+    if (name) {
+      // textContent, never innerHTML - the name comes from the URL.
+      document.getElementById('shareTitle').textContent = name.slice(0, 120) + ' is waiting for you';
+      document.title = name.slice(0, 120) + ' on Eat ABQ';
+    }
+  })();
+</script>
+</body>
+</html>

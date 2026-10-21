@@ -1,0 +1,12 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["F79Q247GTY.com.osterbergapps.eatabq"],
+        "components": [
+          { "/": "/r/*", "comment": "Shared restaurant links" }
+        ]
+      }
+    ]
+  }
+}
